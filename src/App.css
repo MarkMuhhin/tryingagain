@@ -1,33 +1,368 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-family: Roboto;
+  overflow: hidden;
+}
+
+p {
+  display: inline-block;
+  margin: 0;
+  word-break: break-word;
+}
+/* Ekraan ning selle värv */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Chatroomi iseenda mõõtmed ja asjad. */
+.chatroom {
+  width: inherit;
+  height: inherit;
+  box-shadow: 0 0 1px 0 gray;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+/*------------------------------------------------HEADER--------------------------------------------------*/
+/* HEADERI ASJAD ALGAVAD SIIN*/
+.chatroom header {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  width: inherit;
+  height: 60px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
+  background-color: #ffffff;
+}
+/*Päises oleva roboti nimetuse ja pildi css*/
+.chatroom header figure {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding-left: 24.1px;
+}
+/*Päises oleva roboti pildi css*/
+.chatroom header figure img {
+  margin-top: 2px;
+  height: 49px;
+  width: 49px;
+}
+/*Päises oleva roboti nimetuse css*/
+.chatroom header figure figcaption {
+  float: right;
+  color: #62e2c0;
+  padding: 3px 12px 0px 12px;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+}
+/*------------------------------------------------MAIN--------------------------------------------------*/
+/* MAIN ASJAD ALGAVAD SIIN*/
+.chatroom .chats {
+  padding: 51px 0px 50px 0px;
+  margin: 0px 0 0;
+  overflow-y: scroll;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/*textboxi css*/
+.chatroom .chats .chat {
+  background: #ddfde8;
+  position: relative;
+  padding: 10px 17px 14px 20px;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  color: #475277;
+  border-radius: 2px;
+  list-style: none;
+  float: left;
+  clear: both;
+  margin-inline-end: 61.2px;
+  margin-inline-start: 61.2px;
+  margin-top: 0px;
+  max-width: 450px;
+  word-wrap: normal;
+  white-space: initial;
+}
+/*paremate textboxide sees oleva teksti css (pidin natukene timmima, et näeks täpselt nagu näidistöö pildi peal välja)*/
+.chatroom .chats .chat.right p {
+  margin: 2px 1px 0px -1px;
+}
+/*vasakute textboxide sees oleva teksti css (pidin natukene timmima, et näeks täpselt nagu näidistöö pildi peal välja)*/
+.chatroom .chats .chat.left p {
+  margin: 2px 3px 0px -2px;
+}
+
+/*parempoolsete textboxide värvi ja positsiooni muutmine*/
+.chatroom .chats .chat.right {
+  background: #e7e9ff;
+  margin-inline-end: 29px;
+}
+
+/* textboxi üleval oleva informatsiooni stiil */
+.usernametime {
+  display: flex;
+  position: absolute;
+  top: -16px;
+  left: -0.1px;
+}
+
+/*textboxi üleval oleva kasutajanime stiil*/
+.usernametime figcaption {
+  margin-right: 5px;
+  opacity: 0.85;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  color: #62e2c0;
+}
+
+/*textboxi üleval oleva aja indikaatori stiil*/
+.usernametime time {
+  color: #475277;
+  opacity: 0.54;
+  font-size: 10px;
+  margin-top: 1px;
+  margin-left: 3px;
+  width: 29px;
+  height: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+}
+
+/*parempoolse textboxi üleval oleva informatsiooni stiil*/
+.usernametime.right {
+  flex-direction: row-reverse;
+  position: absolute;
+  right: -0.1px;
+}
+
+/*parempoolse textboxi üleval oleva kasutajanime stiil*/
+.usernametime.right figcaption {
+  margin-right: 0px;
+  color: #a5acff;
+  opacity: 0.85;
+}
+
+/* väike roboti ikoon teksti kõrval*/
+.chatroom .chats .chat img {
+  width: 22.5px;
+  height: 23px;
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+  left: -36px;
+}
+
+.chatroom .chats .chat.right {
+  float: right;
+  clear: both;
+}
+/*väikese kujundi css, mis tuleb textboxist välja*/
+.smallTriangle {
+  position: absolute;
+  margin: 0;
+  top: 43%;
+  width: 8.1px;
+  height: 8.1px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/*vasakpoolse kujundi css*/
+.smallTriangle.left {
+  left: -2.5px;
+  background-color: #ddfde8;
+}
+/*parempoolse kujundi css*/
+.smallTriangle.right {
+  right: -3.5px;
+  background-color: #e7e9ff;
+}
+
+/*------------------------------------------------FOOOTER--------------------------------------------------*/
+/* FOOOTERI ASJAD ALGAVAD SIIN*/
+
+/*footeri suurus*/
+.chatroom footer {
+  height: 60px;
+  width: inherit;
+}
+
+/*tekitame rohelise joone nagu näidistöö pildil*/
+.inputdiv {
+  width: auto;
+  border: solid 1px #62e2c0;
+  border-width: 2px 0px 0px 0px;
+  opacity: 0.45;
+}
+
+/*css input väljale*/
+.inputtext {
+  padding: 19px 21px;
+  font-size: 16px;
+  height: 21px;
+  width: 80%;
+  outline: none;
+  border: none;
+  letter-spacing: 0.3px;
+}
+/* > kujulise labeli css*/
+.footerlabel {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 15px;
+  bottom: 14px;
+}
+/*teeme inputi nupu nähtamatuks, sest kasutame vajutamiseks labelit*/
+.inputSubmit {
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  outline: none;
+}
+.svg {
+  height: 17px;
+  width: 12px;
+  position: absolute;
+  margin-left: 13px;
+  margin-top: 7px;
+}
+.svg path {
+  transform: scale(1.05);
+  opacity: 1;
+  fill: #62e2c0;
+}
+
+/*------------------------------------------------TEISTE ERAANI SUURUSTE CSS--------------------------------------------------*/
+
+@media only screen and (max-width: 1100px) {
+  .chatroom .chats .chat {
+    max-width: 415px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 1000px) {
+  .chatroom .chats .chat {
+    max-width: 360px;
   }
+}
+
+@media only screen and (max-width: 900px) {
+  .chatroom .chats .chat {
+    max-width: 300px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .chatroom .chats .chat {
+    max-width: 270px;
+    margin-top: 7px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .chatroom .chats .chat {
+    max-width: 230px;
+    margin-top: 7px;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .chatroom .chats .chat {
+    max-width: 230px;
+    margin-top: 18px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .chatroom header figure {
+    padding-left: 14px;
+  }
+
+  .chatroom .chats {
+    padding: 11px 0px 29px 0px;
+    margin: 0px 0 0;
+    overflow-y: scroll;
+  }
+
+  .chatroom .chats .chat {
+    max-width: 207px;
+    margin-top: 18px;
+    margin-inline-end: 20px;
+    margin-inline-start: 20px;
+    padding: 4px 15px 6px 19px;
+  }
+
+  .chatroom .chats .chat.right {
+    margin-right: 19px;
+  }
+
+  .chatroom .chats .chat img {
+    display: none;
+  }
+
+  .chatroom footer {
+    height: 51px;
+  }
+
+  .inputtext {
+    padding: 14px 18px;
+  }
+  .inputdiv svg {
+    margin-left: 20px;
+    margin-top: 12px;
+  }
+}
+
+@media only screen and (max-width: 220px) {
+  .chatroom header figure {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0px;
+  }
+  /*Päises oleva roboti pildi css*/
+  .chatroom header figure img {
+    height: 45px;
+    width: 45px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /*Päises oleva roboti nimetuse css*/
+  .chatroom header figure figcaption {
+    display: none;
+  }
+
+  .inputtext {
+    padding-right: 5%;
+    width: 60%;
+  }
+}
+/*võtame ära scrollbari nähtavuse, et oleks ilusam*/
+::-webkit-scrollbar {
+  display: none;
 }
